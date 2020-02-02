@@ -6,9 +6,13 @@
                     Home
                 </a>
 
-                <a class="navbar-item">
-                    Documentation
-                </a>
+                <router-link to="/listemembres" class="navbar-item" v-if="$store.state.token_session">
+                    Membres
+                </router-link>
+
+                <router-link to="/connexion" class=navbar-item v-if="!$store.state.token_session">
+                    Login
+                </router-link>
             </div>
         </div>
     </nav>
