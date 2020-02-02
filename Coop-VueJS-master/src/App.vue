@@ -7,39 +7,33 @@
 
 <script>
   import TheNavBar from '@/components/TheNavBar.vue'
-export default {
-name: 'App',
-
-components: {
-  TheNavBar
-},
-
-data: () => ({
-
-}),
-
-mounted(){
-axios.get('ping').then(()=>{
-  let memberID = this.membreConnecte;
-  if(!memberID){
-    this.$router.push('/connexion');
-  }
-  else{
-    axios.get("members/"+memberID+"/signedin").catch((error) => {
-    this.$store.commit('setSessionMembre',false);
-    this.$router.push('/connexion');
-  });
-  }
-}).catch(()=>{
-  alert('Impossible de se connecter à l\'API')
-})
-},
-  computed :{
-    membreConnecte(){
-    return this.$store.state.membre ? this.$store.state.membre.id : false;
+  export default {
+    name: 'App',
+    components: {
+      TheNavBar
+    },
+    mounted(){
+    axios.get('ping').then(()=>{
+      let memberID = this.membreConnecte;
+      if(!memberID){
+        this.$router.push('/connexion');
+      }
+      else{
+        axios.get("members/"+memberID+"/signedin").catch((error) => {
+        this.$store.commit('setSessionMembre',false);
+        this.$router.push('/connexion');
+      });
+      }
+    }).catch(()=>{
+        alert('Impossible de se connecter à l\'API')
+      })
+    },
+    computed :{
+      membreConnecte(){
+        return this.$store.state.membre ? this.$store.state.membre.id : false;
+      }
     }
-  }
-};
+  };
 </script>
 <style>
 html{

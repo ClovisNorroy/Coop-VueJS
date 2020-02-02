@@ -10,7 +10,8 @@
     <router-link to="/connexion">Se connecter</router-link>
     <br>
     <router-link to="/creationconversation">Créer Conversation</router-link>
-<!--    <div v-if="></div>-->
+    <br>
+    <router-link to="/listeconversations">Liste Conversations</router-link>
   </div>
 </template>
 
