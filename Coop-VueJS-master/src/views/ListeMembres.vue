@@ -11,13 +11,11 @@
         data() {
             return {
                 members: null,
-                tokenA : this.$store.state.token_session
             }
         },
         methods:{
             logMembres(){
-                console.log(this.tokenA);
-                axios.get('members?token='.tokenA).then(response=>{
+                axios.get('members').then(response=>{
                     this.members=response.data;
                 });
                 console.log(this.members);
