@@ -13,9 +13,14 @@ export default new Vuex.Store({
   state: {
     piece: false,
     membre : false,
-    token_session : false
+    token_session : false,
+    listeMembres : []
   },
   mutations: {
+    setListeMembres(state, data){
+      console.log(data);
+      state.listeMembres = data;
+    },
     setSessionMembre(state,data) {
       if(data){
         state.membre = data.member;
@@ -26,16 +31,6 @@ export default new Vuex.Store({
       }
 
     },
-    // setPiece(state,piece) {
-    //   state.piece = piece;
-    // },
-    // initialiseStore(state) {
-    //   if(localStorage.getItem('store')) {
-    //     this.replaceState(
-    //         Object.assign(state, JSON.parse(localStorage.getItem('store')))
-    //     );
-    //   }
-    // }
   },
   actions: {
   },

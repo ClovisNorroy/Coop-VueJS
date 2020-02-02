@@ -19,17 +19,24 @@ data: () => ({
 }),
 
 mounted(){
-// axios.get('ping').then(()=>{
-//   if(this.membreConnecte){
-//     this.$router.push('connexion');
-//   }
-// }).catch(()=>{
-//   alert('Impossible de se connecter à l\'API')
-// })
+axios.get('ping').then(()=>{
+  let memberID = this.membreConnecte;
+  if(!memberID){
+    this.$router.push('/connexion');
+  }
+  else{
+    axios.get("members/"+memberID+"/signedin").catch((error) => {
+    this.$store.commit('setSessionMembre',false);
+    this.$router.push('/connexion');
+  });
+  }
+}).catch(()=>{
+  alert('Impossible de se connecter à l\'API')
+})
 },
   computed :{
     membreConnecte(){
-    return this.$store.state.membre;
+    return this.$store.state.membre ? this.$store.state.membre.id : false;
     }
   }
 };

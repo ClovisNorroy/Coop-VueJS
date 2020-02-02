@@ -2,9 +2,9 @@
     <nav class="navbar is-success" role="navigation" aria-label="main navigation">
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
+                <router-link to="/" class="navbar-item">
                     Home
-                </a>
+                </router-link>
 
                 <router-link to="/listemembres" class="navbar-item" v-if="$store.state.token_session">
                     Membres

@@ -19,7 +19,12 @@
             connect: function(){
                 axios.post('members/signin',{email:this.email,password:this.password}).then(response => {
                     this.$store.commit('setSessionMembre',response.data);
-                    console.log(response.data)
+                    axios.get('members').then(response => {
+                        this.$store.commit('setListeMembres', response.data)
+                    }).catch(error => {
+                        console.log(error.response)
+                    });
+                    this.$router.push('/');
                 }).catch(error => {
                     console.log(error.response)
                 })
