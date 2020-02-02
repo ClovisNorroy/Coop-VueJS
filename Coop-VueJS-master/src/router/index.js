@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import CreationCompte from "../views/CreationCompte";
 import Connexion from "../views/Connexion";
 import ListeMembres from "../views/ListeMembres";
+import CreationConversation from "../views/CreationConversation";
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,11 @@ const routes = [
     name: 'Connexion',
     component: Connexion
   },
+  {
+    path: '/creationconversation',
+    name: 'CreationConversation',
+    component: CreationConversation
+  }
   // {
   //   path: '/about',
   //   name: 'about',

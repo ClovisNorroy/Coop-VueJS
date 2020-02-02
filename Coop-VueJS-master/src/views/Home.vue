@@ -8,6 +8,8 @@
     <router-link to="/creationcompte">Creer un compte</router-link>
     <br>
     <router-link to="/connexion">Se connecter</router-link>
+    <br>
+    <router-link to="/creationconversation">Créer Conversation</router-link>
 <!--    <div v-if="></div>-->
   </div>
 </template>
