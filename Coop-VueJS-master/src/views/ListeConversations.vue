@@ -3,8 +3,9 @@
         <div v-for="conversation in listeConversations">
             {{  conversation }}
             <button type=button @click="setChannel(conversation.id)">Set channel</button>
+            <ListeMessages :channel="conversation.id" :messages="listeMessages"></ListeMessages>
         </div>
-<!--        <ListeMessages channel="" messages=""></ListeMessages>-->
+
     </div>
 </template>
 
@@ -26,9 +27,8 @@
         methods:{
             setChannel: function(channelID){
                 axios.get('channels/'+channelID+'/posts').then(response=>{
-                    console.log(channelID);
                     console.log(response.data);
-                    //this.currentChannel = response.data
+                    // this.listeMessages = response.data
                 }).catch(error=>{
                     alert(error.response.data.message)
                 })
