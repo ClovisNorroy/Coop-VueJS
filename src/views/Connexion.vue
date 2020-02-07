@@ -19,8 +19,16 @@
             connect: function(){
                 axios.post('members/signin',{email:this.email,password:this.password}).then(response => {
                     this.$store.commit('setSessionMembre',response.data);
-                    axios.get('members').then(response => {
-                        this.$store.commit('setListeMembres', response.data)
+                    axios.get('members').then(response =>{
+                        let listeMembres = [];
+                        response.data.forEach(membre => {
+                            let temp = membre.id;
+                            delete membre.id;
+                            let foo = { id : temp, details : membre};
+                            listeMembres.push(foo);
+                            }
+                        );
+                        this.$store.commit('setListeMembres', listeMembres)
                     }).catch(error => {
                         console.log(error.response)
                     });

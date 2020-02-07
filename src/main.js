@@ -27,6 +27,8 @@ new Vue({
             return config
         }, error => {
             return console.log(error)
-        })
+        });
+        //setup liste membres
+
     }
 }).$mount('#app');

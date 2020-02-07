@@ -12,6 +12,8 @@
     <router-link to="/creationconversation">Créer Conversation</router-link>
     <br>
     <router-link to="/listeconversations">Liste Conversations</router-link>
+    <br>
+<!--    <router-link to="/detailmembre/"-->
   </div>
 </template>
 

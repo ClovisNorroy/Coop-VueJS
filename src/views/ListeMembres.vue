@@ -1,7 +1,7 @@
 <template>
     <div id="ListeMembres">
-        <div v-for="membre in this.$store.state.listeMembres">
-            {{ membre.fullname }}
+        <div v-for="item in this.$store.state.listeMembres">
+            {{ item.id }} {{item.details}}
         </div>
     </div>
 </template>
@@ -12,8 +12,8 @@
         methods:{
 
         },
-
         mounted() {
+            console.log(this.$store.state.listeMembres);
         }
     }
 </script>

@@ -6,6 +6,7 @@ import Connexion from "../views/Connexion";
 import ListeMembres from "../views/ListeMembres";
 import CreationConversation from "../views/CreationConversation";
 import ListeConversations from "../views/ListeConversations";
+import DetailMembre from "../views/DetailMembre";
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,12 @@ const routes = [
     path: '/listeconversations',
     name: 'ListeConversations',
     component: ListeConversations
+  },
+  {
+    path: '/detailmembre/:userId',
+    name: 'DetailMembre',
+    component: DetailMembre,
+    props: true
   }
   // {
   //   path: '/about',

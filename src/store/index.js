@@ -18,7 +18,6 @@ export default new Vuex.Store({
   },
   mutations: {
     setListeMembres(state, data){
-      console.log(data);
       state.listeMembres = data;
     },
     setSessionMembre(state,data) {
