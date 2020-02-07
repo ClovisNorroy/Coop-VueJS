@@ -6,10 +6,14 @@
     export default {
         name: "DetailMembre",
         props: ['userId'],
-        mounted(){
-            axios.get('members').then(response => {
-                console.log(response.data);
-            })
+        methods:{
+            getDerniersMessageMembre: function() {
+                axios.get('channels').then(channels => {
+                    channels.forEach(channel=>{
+                        axios.get('channels/'+channel.id+'/posts')
+                    })
+                })
+            }
         }
     }
 </script>

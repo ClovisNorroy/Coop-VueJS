@@ -13,7 +13,7 @@
     <br>
     <router-link to="/listeconversations">Liste Conversations</router-link>
     <br>
-<!--    <router-link to="/detailmembre/"-->
+    <router-link to="/detailmembre/7f80a88bce13a1d58a974296692faf7b525b2309">detail Membre</router-link>
   </div>
 </template>
 

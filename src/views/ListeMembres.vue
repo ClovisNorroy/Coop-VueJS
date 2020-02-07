@@ -9,12 +9,6 @@
 <script>
     export default {
         name: "ListeMembres",
-        methods:{
-
-        },
-        mounted() {
-            console.log(this.$store.state.listeMembres);
-        }
     }
 </script>
 
