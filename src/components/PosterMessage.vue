@@ -1,13 +1,14 @@
 <template>
     <div class="posterMessage">
-        <input type="text" v-model="message" id="channelLabels"><button type=button @click="posterMessage">Send</button>
+        <input type="text" v-model="message" id="channelLabels"><button type=button @click="posterMessage()">Send</button>
+<!--        ; $emit('addMessage')-->
     </div>
 </template>
 
 <script>
     export default {
         name: "PosterMessage",
-        props: ['channelId'],
+        props: ['channelId', 'messages'],
         data(){
             return{
                 message : null
@@ -19,7 +20,9 @@
                     {
                         message: this.message,
                         member_id : this.$store.state.member_id
-                    }).then(response=>{console.log(response.data)}).catch(error =>{
+                    }).then(response=>{
+                        this.messages.push(response.data);
+                    }).catch(error =>{
                         alert(error.response.data.message)
                 })
             }

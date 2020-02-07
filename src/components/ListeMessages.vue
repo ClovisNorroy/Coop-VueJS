@@ -1,9 +1,9 @@
 <template>
     <div class="listeMessages">
-        <div class=message" v-for="message in messages">
+        <div class="message" v-for="message in messages">
             {{  message.message }}
         </div>
-<!--        <poster-message :channel-id="channel"></poster-message>-->
+        <poster-message :messages="messages" :channel-id="channel"></poster-message>
     </div>
 </template>
 
@@ -15,9 +15,6 @@ import PosterMessage from "./PosterMessage";
         components:{
             PosterMessage
         },
-        mounted() {
-            console.log(this.props);
-        }
     }
 </script>
 

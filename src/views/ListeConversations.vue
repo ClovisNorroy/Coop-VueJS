@@ -1,11 +1,10 @@
 <template>
     <div id="listeConversations">
-        <div v-for="conversation in listeConversations">
+        <div v-if="listeConversations.length" v-for="conversation in listeConversations">
             {{  conversation }}
-            <button type=button @click="setChannel(conversation.id)">Set channel</button>
-            <ListeMessages :channel="conversation.id" :messages="listeMessages"></ListeMessages>
+            <button type=button @click="setChannel(conversation)">Set channel</button>
         </div>
-
+        <liste-messages :channel="currentChannel" :messages="listeMessages"></liste-messages>
     </div>
 </template>
 
@@ -25,10 +24,11 @@
             }
         },
         methods:{
-            setChannel: function(channelID){
-                axios.get('channels/'+channelID+'/posts').then(response=>{
+            setChannel: function(channel){
+                axios.get('channels/'+channel.id+'/posts').then(response=>{
                     console.log(response.data);
-                    // this.listeMessages = response.data
+                    this.listeMessages = response.data.reverse();
+                    this.currentChannel=channel;
                 }).catch(error=>{
                     alert(error.response.data.message)
                 })
