@@ -49,9 +49,8 @@
                     email: this.email,
                     password: this.password
                 }).then((response) => {
-                    console.log("REGISTERED");
-                    //this.$router.push('/connexion');
-                });
+                    this.$router.push('/connexion');
+                }).catch(error => { console.log(error.response)});
             }
         }
     }

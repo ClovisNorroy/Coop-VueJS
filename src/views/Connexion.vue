@@ -20,22 +20,15 @@
                 axios.post('members/signin',{email:this.email,password:this.password}).then(response => {
                     this.$store.commit('setSessionMembre',response.data);
                     axios.get('members').then(response =>{
-                        let listeMembres = [];
+                        let listeMembres = {};
                         response.data.forEach(membre => {
-                            let temp = membre.id;
-                            delete membre.id;
-                            let foo = { id : temp, details : membre};
-                            listeMembres.push(foo);
+                            listeMembres[membre.id] = membre;
                             }
                         );
                         this.$store.commit('setListeMembres', listeMembres)
-                    }).catch(error => {
-                        console.log(error.response)
-                    });
+                    }).catch(error => { console.log(error.response)});
                     this.$router.push('/');
-                }).catch(error => {
-                    console.log(error.response)
-                })
+                }).catch(error => { console.log(error.response)})
             }
         }
     }

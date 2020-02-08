@@ -1,7 +1,11 @@
 <template>
     <div id="ListeMembres">
-        <div v-for="item in this.$store.state.listeMembres">
-            {{ item.id }} {{item.details}}
+        <div v-for="membre in $store.state.listeMembres">
+            <router-link :to="'/detailmembre/' + membre.id">
+                <div class="membre">
+                    {{ membre }}
+                </div>
+            </router-link>
         </div>
     </div>
 </template>
