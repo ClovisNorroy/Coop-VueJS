@@ -3,7 +3,7 @@
         <div class="message" v-for="message in messages">
             {{  message.message }}
         </div>
-        <poster-message :messages="messages" :channel-id="channel"></poster-message>
+        <poster-message v-if="channel" :messages="messages" :channel-id="channel"></poster-message>
     </div>
 </template>
 

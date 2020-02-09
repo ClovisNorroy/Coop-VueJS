@@ -20,8 +20,10 @@
                     {
                         message: this.message,
                         member_id : this.$store.state.member_id
-                    }).then(response=>{
-                        this.messages.push(response.data);
+                    }
+                    ).then(response=>{
+                    console.log(response.data);
+                    this.messages.push(response.data);
                     }).catch(error =>{
                         alert(error.response.data.message)
                 })
