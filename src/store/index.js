@@ -28,8 +28,12 @@ export default new Vuex.Store({
         state.membre=false;
         state.token_session=false;
       }
-
     },
+    logout(state){
+      state.listeMembres=[];
+      state.membre=false;
+      state.token_session=false;
+    }
   },
   actions: {
   },

@@ -14,16 +14,16 @@
     },
     mounted(){
     axios.get('ping').then(()=>{
-      let memberID = this.membreConnecte;
-      if(!memberID){
-        this.$router.push('/connexion');
-      }
-      else{
-        axios.get("members/"+memberID+"/signedin").catch((error) => {
-        this.$store.commit('setSessionMembre',false);
-        this.$router.push('/connexion');
-      });
-      }
+      // let memberID = this.membreConnecte;
+      // if(!memberID){
+      //   this.$router.push('/connexion');
+      // }
+      // else{
+      //   axios.get("members/"+memberID+"/signedin").catch((error) => {
+      //   this.$store.commit('setSessionMembre',false);
+      //   this.$router.push('/connexion');
+      // });
+      // }
     }).catch(()=>{
         alert('Impossible de se connecter à l\'API')
       })
