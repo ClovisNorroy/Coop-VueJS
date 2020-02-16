@@ -1,9 +1,11 @@
 <template>
     <div id="listeConversations">
         <div class="columns">
-            <div class="column is-one-third">
-                <div v-if="listeConversations.length" v-for="conversation in listeConversations" @click="setChannel(conversation)">
-                    {{  conversation }}
+            <div class="column is-one-third bordered">
+                <h2 class="title is-4">Liste des conversations : </h2>
+                <div class="box" v-if="listeConversations.length" v-for="conversation in listeConversations" @click="setChannel(conversation)">
+                    <strong>{{  conversation.label }}</strong>
+                    <p>{{conversation.topic}}</p>
                 </div>
             </div>
             <div class="column">
@@ -44,10 +46,12 @@
             }).catch(error=>{
                 alert(error.response.data.message)
             })
-        }
+        },
     }
 </script>
 
-<style scoped>
-
+<style>
+.bordered{
+    border-right: 1px solid black;
+}
 </style>

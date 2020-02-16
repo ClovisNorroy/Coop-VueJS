@@ -1,10 +1,13 @@
 <template>
     <div id="ListeMembres">
-        <div v-for="membre in $store.state.listeMembres">
+        <div class="box" v-for="membre in $store.state.listeMembres">
+
             <router-link :to="'/detailmembre/' + membre.id">
-                <div class="membre">
-                    {{ membre }}
+                <div class="content ">
+                    <p>{{membre.fullname}}</p>
+                    <p>{{membre.email}}</p>
                 </div>
+
             </router-link>
         </div>
     </div>
