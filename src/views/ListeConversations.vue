@@ -1,10 +1,15 @@
 <template>
     <div id="listeConversations">
-        <div v-if="listeConversations.length" v-for="conversation in listeConversations">
-            {{  conversation }}
-            <button type=button @click="setChannel(conversation)">Set channel</button>
+        <div class="columns">
+            <div class="column is-one-third">
+                <div v-if="listeConversations.length" v-for="conversation in listeConversations" @click="setChannel(conversation)">
+                    {{  conversation }}
+                </div>
+            </div>
+            <div class="column">
+                <liste-messages :channel="currentChannel" :messages="listeMessages"></liste-messages>
+            </div>
         </div>
-        <liste-messages :channel="currentChannel" :messages="listeMessages"></liste-messages>
     </div>
 </template>
 

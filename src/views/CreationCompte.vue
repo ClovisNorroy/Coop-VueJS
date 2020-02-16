@@ -1,11 +1,28 @@
 <template>
     <div>
-        <div class="errors" v-if="errors.length">ERRORS</div>
-
-        Fullname :  <input type="text" v-model="fullname" id="fullname" required/><br/>
-        Email :     <input type="email"  v-model="email" required><br/>
-        Password :  <input type="password" v-model.lazy="password" required><br/>
-        <button type="button" @click="validateForm">Register</button>
+        <div class="column is-half  is-offset-one-quarter">
+            <div class="field">
+                <label class="label">Fullname</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Your Fullname" v-model="fullname">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <input class="input" type="email" placeholder="Account Email" v-model="email">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" type="password" placeholder="Account Password" v-model.lazy="password">
+                </div>
+            </div>
+            <div class="field is-centered">
+                <button class="button is-primary is-rounded" @click="validateForm">Register</button>
+            </div>
+        </div>
     </div>
 </template>
 

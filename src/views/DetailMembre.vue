@@ -63,22 +63,6 @@
                 setTimeout(()=>{
                     this.memberLastMessages = listMessages.slice(nbrMessagesToKeep);
                 }, 1000);
-                // axios.get('channels').then(response => {
-                //     response.data.forEach(channel =>{
-                //         channelMap[channel.id] = {label: channel.label, topic: channel.topic}
-                //     });
-                //     listMessages.forEach(message => {
-                //         message.channel = channelMap[message.channel_id];
-                //     });
-                //     listMessages.sort(
-                //         function(a,b) {
-                //             console.log("oui");
-                //             let dateA = new Date(a.created_at); let dateB = new Date(b.created_at);
-                //             return dateA-dateB;
-                //         }
-                //     );
-                //     this.memberLastMessages = listMessages;
-                // });
             }
         }
     }
