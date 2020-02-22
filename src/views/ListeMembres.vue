@@ -8,7 +8,7 @@
                     <p>{{membre.email}}</p>
                 </div>
             </router-link>
-            <img @click="toggleDeleteMember(membre)" src="../assets/icons/trash-solid.svg" v-show="!boolModal"
+            <img @click="toggleDeleteMember(membre)" src="../assets/icons/trash-solid.svg" v-show="!boolModal && !isSelf(membre)"
                  width=16>
         </div>
         <div class="modalToDo" v-if="boolModal">
@@ -34,13 +34,18 @@
                 this.memberToDelete = membre;
             },
             deleteMember: function(){
-                axios.delete('members/'+this.memberToDelete.id).then(response =>{
-                    console.log(response.data);
-                }).catch(error=>{
-                    console.log(error.response.data.message);
-                })
+                if(this.memberToDelete.id!==this.$store.state.membre.id) {
+                    axios.delete('members/' + this.memberToDelete.id).then(response => {
+                        console.log(response.data);
+                    }).catch(error => {
+                        console.log(error.response.data.message);
+                    })
+                }
+            },
+            isSelf: function(member){
+                return member.id === this.$store.state.membre.id;
             }
-        }
+        },
     }
 </script>
 
