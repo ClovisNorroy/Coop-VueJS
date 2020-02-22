@@ -35,7 +35,9 @@
                 axios.get('channels/'+channel.id+'/posts').then(response=>{
                     this.listeMessages = response.data.reverse();
                     this.currentChannel=channel.id;
-                    console.log(this.listeMessages);
+                    this.listeMessages.map(message=>{
+                        message.memberName = this.$store.state.memberIdToFullname[message.member_id];
+                    });
                 }).catch(error=>{
                     alert(error.response.data.message)
                 })

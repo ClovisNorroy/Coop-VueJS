@@ -3,6 +3,7 @@
 
         <div class="message is-small" v-for="message in messages" v-if="messages.length">
             <div class="message-header" v-if="displayContext">In channel : {{message.channel.label}} </div>
+            <div class="message-header" v-if="!displayContext"> From : {{message.memberName}} || {{message.created_at}}</div>
             <div class="message-body">{{  message.message }}</div>
 
         </div>

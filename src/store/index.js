@@ -14,11 +14,15 @@ export default new Vuex.Store({
     piece: false,
     membre : false,
     token_session : false,
-    listeMembres : []
+    listeMembres : [],
+    memberIdToFullname : []
   },
   mutations: {
     setListeMembres(state, data){
       state.listeMembres = data;
+      Object.values(data).forEach(member=>{
+        this.state.memberIdToFullname[member.id]=member.fullname;
+      })
     },
     setSessionMembre(state,data) {
       if(data){
