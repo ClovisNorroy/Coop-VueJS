@@ -3,13 +3,20 @@
 
         <div class="message is-small" v-for="message in messages" v-if="messages.length">
             <router-link :to="'/listeconversations/' + message.channel_id">
-            <div class="message-header" v-if="boolMod">In channel : {{message.channel.label}} </div>
+            <div class="message-header" v-if="boolMod">
+                In channel : {{message.channel.label}}
+                <button class="delete" aria-label="delete"></button>
+            </div>
             </router-link>
             <router-link :to="'/detailmembre/' + message.member_id" v-if="Object.keys($store.state.listeMembres).includes(message.member_id) && !boolMod">
-            <div class="message-header"> From : {{message.memberName}} || {{message.created_at}}</div>
+            <div class="message-header">
+                From : {{message.memberName}} || {{message.created_at}}
+                <button class="delete" aria-label="delete"></button>
+            </div>
             </router-link>
             <div class="message-header" v-if="!Object.keys($store.state.listeMembres).includes(message.member_id) && !boolMod">
                 From : Deleted Member || {{message.created_at}}
+                <button class="delete" aria-label="delete"></button>
             </div>
             <div class="message-body">{{  message.message }}</div>
         </div>
@@ -25,8 +32,10 @@ import PosterMessage from "./PosterMessage";
         components:{
             PosterMessage
         },
-        mounted(){
-            console.log(Object.keys(this.$store.state.listeMembres));
+        methods:{
+            deleteMessage(channelId, messageId){
+                // axios.delete()
+            }
         }
     }
 </script>
