@@ -1,7 +1,7 @@
 <template>
     <div id="detailMembre">
         {{membre}}
-        <liste-messages :messages="memberLastMessages" display-context="true"></liste-messages>
+        <liste-messages :messages="memberLastMessages" bool-mod="true"></liste-messages>
     </div>
 
 </template>
@@ -23,7 +23,7 @@
             }
         },
         mounted() {
-            this.keepNLastMessages(4);
+            this.keepNLastMessages(10);
         },
         methods:{
             //TODO : add to local storage and delete on new message
@@ -61,7 +61,7 @@
                     });
                 }, 500);
                 setTimeout(()=>{
-                    this.memberLastMessages = listMessages.slice(nbrMessagesToKeep);
+                    this.memberLastMessages = listMessages.slice(0, nbrMessagesToKeep);
                 }, 1000);
             }
         }

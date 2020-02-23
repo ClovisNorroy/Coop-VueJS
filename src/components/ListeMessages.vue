@@ -2,8 +2,12 @@
     <div class="listeMessages">
 
         <div class="message is-small" v-for="message in messages" v-if="messages.length">
-            <div class="message-header" v-if="displayContext">In channel : {{message.channel.label}} </div>
-            <div class="message-header" v-if="!displayContext"> From : {{message.memberName}} || {{message.created_at}}</div>
+            <router-link :to="'/listeconversations/' + message.channel_id">
+            <div class="message-header" v-if="boolMod">In channel : {{message.channel.label}} </div>
+            </router-link>
+            <router-link :to="'/detailmembre/' + message.member_id">
+            <div class="message-header" v-if="!boolMod"> From : {{message.memberName}} || {{message.created_at}}</div>
+            </router-link>
             <div class="message-body">{{  message.message }}</div>
 
         </div>
@@ -15,7 +19,7 @@
 import PosterMessage from "./PosterMessage";
     export default {
         name: "ListeMessages",
-        props: ['channel', 'messages', 'displayContext'],
+        props: ['channel', 'messages', 'boolMod'],
         components:{
             PosterMessage
         },

@@ -37,9 +37,9 @@ const routes = [
     component: CreationConversation
   },
   {
-    path: '/listeconversations',
+    path: '/listeconversations/:channelId?',
     name: 'ListeConversations',
-    component: ListeConversations
+    component: ListeConversations,
   },
   {
     path: '/detailmembre/:userId',
