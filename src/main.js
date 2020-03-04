@@ -3,11 +3,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
+import { library} from "@fortawesome/fontawesome-svg-core";
+import { faUserSecret, faPen} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+library.add(faUserSecret, faPen);
 
 import 'bulma/css/bulma.css'
 
 Vue.config.productionTip = false;
-
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 window.axios = axios.create({
     baseURL: 'https://tools.sopress.net/iut/coop/api/',
     headers: { Authorization: '1741d2b94e920b3c3fe2f46d0af35f88ca9459c4' }

@@ -2,7 +2,6 @@
     <div class="listeMessages">
 
         <div class="message is-small" v-for="(message, index) in messages" v-if="messages.length">
-
             <div class="message-header" v-if="boolMod">
                 <router-link :to="'/listeconversations/' + message.channel_id">
                 In channel : {{message.channel.label}}
@@ -18,7 +17,7 @@
                 <button class="delete" aria-label="delete" v-if="message.member_id === $store.state.membre.id"
                         @click="deleteMessage(message.channel_id, message.id, index)"></button>
             </div>
-<!--            -->
+
             <div class="message-header" v-if="!Object.keys($store.state.listeMembres).includes(message.member_id) && !boolMod">
                 From : Deleted Member || {{message.created_at}}
             </div>

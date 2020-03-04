@@ -1,5 +1,6 @@
 <template>
     <div id="ListeMembres">
+        <font-awesome-icon icon="pen"></font-awesome-icon>
         <div class="box" v-for="membre in $store.state.listeMembres">
 
             <router-link :to="'/detailmembre/' + membre.id">
