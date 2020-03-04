@@ -1,6 +1,6 @@
 <template>
     <div id="detailMembre">
-        {{membre}}
+        Member : {{membre.fullname}} <br>Email : {{membre.email}}
         <liste-messages :messages="memberLastMessages" bool-mod="true"></liste-messages>
     </div>
 
@@ -58,6 +58,7 @@
                                 return dateA-dateB;
                             }
                         );
+                        this.memberLastMessages = listMessages.slice(0, nbrMessagesToKeep);
                     });
                 }, 500);
                 setTimeout(()=>{
