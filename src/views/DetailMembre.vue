@@ -26,7 +26,6 @@
             this.keepNLastMessages(10);
         },
         methods:{
-            //TODO : add to local storage and delete on new message
             getAllMessages: async function(){
                 let messageList = [];
                 axios.get('channels').then(channelResponse => {
