@@ -1,8 +1,7 @@
 <template>
     <div id="ListeMembres">
-        <font-awesome-icon icon="pen"></font-awesome-icon>
         <div class="box" v-for="membre in $store.state.listeMembres">
-
+            <div class=media-left><figure class="image is-64x64"><img :src="getGravatar(membre)"></figure></div>
             <router-link :to="'/detailmembre/' + membre.id">
                 <div class="content ">
                     <p>{{membre.fullname}}</p>

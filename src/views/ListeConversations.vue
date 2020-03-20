@@ -5,7 +5,7 @@
             <div class="column is-one-third bordered Left">
                 <h2 class="title is-4">Liste des conversations</h2>
                 <div class="box" v-if="listeConversations.length" v-for="channel in listeConversations"
-                     @click="setChannel(channel.id); selected = channel" v-bind:class="{selected: selected == channel}">
+                     @click="setChannel(channel.id); selected = channel" v-bind:class="{selected: selected === channel}">
                     <strong>{{  channel.label }}</strong>
                     <p>{{channel.topic}}</p>
                 </div>

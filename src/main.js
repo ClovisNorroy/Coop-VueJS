@@ -17,6 +17,9 @@ window.axios = axios.create({
     headers: { Authorization: '1741d2b94e920b3c3fe2f46d0af35f88ca9459c4' }
 });
 
+import { utils } from "./utils";
+Vue.mixin(utils);
+
 new Vue({
   router,
   store,
@@ -33,6 +36,5 @@ new Vue({
             return console.log(error)
         });
         //setup liste membres
-
     }
 }).$mount('#app');

@@ -14,6 +14,7 @@
                 <router-link :to="'/detailmembre/' + message.member_id" >
                 From : {{message.memberName}} || {{message.created_at}}
                 </router-link>
+                <font-awesome-icon icon="pen" ></font-awesome-icon>
                 <button class="delete" aria-label="delete" v-if="message.member_id === $store.state.membre.id"
                         @click="deleteMessage(message.channel_id, message.id, index)"></button>
             </div>
@@ -35,16 +36,15 @@ import PosterMessage from "./PosterMessage";
         components:{
             PosterMessage
         },
-        mounted() {
-            console.log(this.messages);
-        },
         methods:{
             deleteMessage(channelId, messageId, index){
-                console.log(index);
                 axios.delete("channels/"+channelId+"/posts/"+messageId).then(response=> {
                     console.log(response.data);
                     this.messages.splice(index, 1);
                 }).catch(error => { console.log(error.response)});
+            },
+            editMessage(channenId, messageId, newMessage, index){
+                //axios.put
             }
         }
     }
