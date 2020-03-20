@@ -29,14 +29,10 @@
                 listeConversations: [],
                 listeMessages: [],
                 currentChannel: null,
-                selected: null
+                selected: null,
             }
         },
         methods:{
-            changeColor: function(event){
-                console.log(event);
-                event.target
-            },
             setChannel: function(channelId){
                 axios.get('channels/'+channelId+'/posts').then(response=>{
                     this.listeMessages = response.data.reverse();
@@ -47,7 +43,7 @@
                 }).catch(error=>{
                     alert(error.response.data.message)
                 })
-            }
+            },
         },
         mounted() {
             axios.get('channels').then((response)=>{

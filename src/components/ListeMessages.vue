@@ -14,7 +14,7 @@
                 <router-link :to="'/detailmembre/' + message.member_id" >
                 From : {{message.memberName}} || {{message.created_at}}
                 </router-link>
-                <font-awesome-icon icon="pen" ></font-awesome-icon>
+                <font-awesome-icon icon="pen" @click="toggleEditMessage(message)"></font-awesome-icon>
                 <button class="delete" aria-label="delete" v-if="message.member_id === $store.state.membre.id"
                         @click="deleteMessage(message.channel_id, message.id, index)"></button>
             </div>
@@ -25,6 +25,17 @@
             <div class="message-body">{{  message.message }}</div>
         </div>
         <poster-message v-if="channel" :messages="messages" :channel-id="channel"></poster-message>
+        <div class="modal is-active" v-if="boolModal" >
+            <div class="modal-background" @click="toggleEditMessage"></div>
+            <div class="modal-card">
+                <div class=modal-card-head>Modifier un message</div>
+                <div class="modal-card-body">
+                    <input type="text" v-model="editedMessage.message">
+                    <button type=button @click="confirmEditMessage">Envoyer</button>
+                    <button type=button @click="toggleEditMessage">Annuler</button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -36,15 +47,29 @@ import PosterMessage from "./PosterMessage";
         components:{
             PosterMessage
         },
+        data(){
+            return {
+                boolModal: false,
+                editedMessage: null,
+                newMessage: ""
+            }
+        },
         methods:{
-            deleteMessage(channelId, messageId, index){
-                axios.delete("channels/"+channelId+"/posts/"+messageId).then(response=> {
+            deleteMessage(message, index){
+                axios.delete("channels/"+message.channel_id+"/posts/"+message.id).then(response=> {
                     console.log(response.data);
                     this.messages.splice(index, 1);
                 }).catch(error => { console.log(error.response)});
             },
-            editMessage(channenId, messageId, newMessage, index){
-                //axios.put
+            toggleEditMessage(message){
+                this.boolModal = !this.boolModal;
+                this.editedMessage = message;
+            },
+            confirmEditMessage(){
+                axios.put("channels/"+this.editedMessage.channel_id+"/posts/"+this.editedMessage.id, {message: this.editedMessage.message}).then(response=> {
+                    console.log(response.data);
+                    this.boolModal=false;
+                }).catch(error => { console.log(error.response)});
             }
         }
     }

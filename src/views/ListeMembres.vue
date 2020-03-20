@@ -11,10 +11,17 @@
             <img @click="toggleDeleteMember(membre)" src="../assets/icons/trash-solid.svg" v-show="!boolModal && !isSelf(membre)"
                  width=16>
         </div>
-        <div class="modalToDo" v-if="boolModal">
-            Voulez-vous vraiment supprimer {{memberToDelete.fullname}} ?
-            <button type=button @click="deleteMember">Oui</button>
-            <button type=button @click="toggleDeleteMember">Non</button>
+        <div class="modal is-active" v-if="boolModal" >
+            <div class="modal-background" @click="toggleDeleteMember"></div>
+            <div class="modal-card">
+                <div class=modal-card-head>Suppresion de membre</div>
+                <div class="modal-card-body">
+                    Voulez-vous vraiment supprimer <b>{{memberToDelete.fullname}}</b> ?
+
+                <button type=button @click="deleteMember">Oui</button>
+                <button type=button @click="toggleDeleteMember">Non</button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
