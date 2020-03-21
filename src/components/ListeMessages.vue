@@ -14,7 +14,7 @@
                 <router-link :to="'/detailmembre/' + message.member_id" >
                 From : {{message.memberName}} || {{message.created_at}}
                 </router-link>
-                <font-awesome-icon icon="pen" @click="toggleEditMessage(message)"></font-awesome-icon>
+                <font-awesome-icon style="cursor:pointer;"icon="pen" @click="toggleEditMessage(message)"></font-awesome-icon>
                 <button class="delete" aria-label="delete" v-if="message.member_id === $store.state.membre.id"
                         @click="deleteMessage(message.channel_id, message.id, index)"></button>
             </div>
@@ -25,14 +25,30 @@
             <div class="message-body">{{  message.message }}</div>
         </div>
         <poster-message v-if="channel" :messages="messages" :channel-id="channel"></poster-message>
+        <!------------------------------------------------------------------------------------------------------------>
+        <!---------------------------------------------------- MODAL ------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------------>
         <div class="modal is-active" v-if="boolModal" >
             <div class="modal-background" @click="toggleEditMessage"></div>
             <div class="modal-card">
                 <div class=modal-card-head>Modifier un message</div>
                 <div class="modal-card-body">
-                    <input type="text" v-model="editedMessage.message">
-                    <button type=button @click="confirmEditMessage">Envoyer</button>
-                    <button type=button @click="toggleEditMessage">Annuler</button>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label"></label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field is-expanded">
+                                <div class="control">
+                                    <input class ="input" type="text" v-model="editedMessage.message">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons is-centered">
+                            <button class="button is-primary" type=button @click="confirmEditMessage">Envoyer</button>
+                            <button class="button is-danger" type=button @click="toggleEditMessage">Annuler</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

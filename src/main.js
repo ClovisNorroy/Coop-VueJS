@@ -28,8 +28,8 @@ new Vue({
         window.axios.interceptors.request.use((config) =>{
             // Do something before request is sent
             if(this.$store.state.token_session != null) {
-                //console.log("Interceptors");
                 config.url+='?token='+this.$store.state.token_session;
+                console.log(config.url);
             }
             return config
         }, error => {

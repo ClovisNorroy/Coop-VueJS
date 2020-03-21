@@ -1,7 +1,15 @@
 <template>
     <div class="posterMessage">
-        <input type="text" v-model="message" id="channelLabels"><button type=button @click="posterMessage()">Send</button>
-<!--        ; $emit('addMessage')-->
+        <div class="field has-addons">
+            <div class="control is-expanded">
+                <input type="text" class="input" v-model="message" id="channelLabels">
+            </div>
+            <div class="control">
+                <a class="button is-info" @click="posterMessage()">
+                    Send
+                </a>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -24,6 +32,7 @@
                     ).then(response=>{
                     console.log(response.data);
                     this.messages.push(response.data);
+                    this.message="";
                     }).catch(error =>{
                         alert(error.response.data.message)
                 })

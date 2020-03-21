@@ -1,19 +1,7 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <router-link to="/creationcompte">Create Account</router-link>
-    <br>
-    <router-link to="/listemembres">Liste Membres</router-link>
-    <br>
-    <router-link to="/creationcompte">Creer un compte</router-link>
-    <br>
-    <router-link to="/connexion">Se connecter</router-link>
-    <br>
-    <router-link to="/creationconversation">Créer Conversation</router-link>
-    <br>
-    <router-link to="/listeconversations">Liste Conversations</router-link>
-    <br>
-    <router-link to="/detailmembre/7f80a88bce13a1d58a974296692faf7b525b2309">detail Membre</router-link>
+    <h1 class="title is-1">Bienvenue sur Coop</h1>
+    <h2 class="subtitle is-2">Clone de Slack</h2>
   </div>
 </template>
 
