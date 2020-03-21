@@ -1,7 +1,18 @@
 <template>
     <div id="detailMembre">
-        Member : {{membre.fullname}} <br>Email : {{membre.email}}
-        <liste-messages :messages="memberLastMessages" bool-mod="true"></liste-messages>
+        <div class="container">
+            <div class="media">
+            <div class="media-left">
+                <img :src="getGravatar(membre)">
+            </div>
+            <div class="media-content">
+                <b>Member</b> : {{membre.fullname}} <br><b>Email</b> : {{membre.email}}
+
+            </div>
+
+            </div>
+            <liste-messages :messages="memberLastMessages" bool-mod="true"></liste-messages>
+        </div>
     </div>
 
 </template>

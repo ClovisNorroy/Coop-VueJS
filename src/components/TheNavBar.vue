@@ -15,6 +15,9 @@
                 <router-link to="/connexion" class=navbar-item v-if="!$store.state.token_session">
                     Login
                 </router-link>
+                <router-link to="/creationcompte" class=navbar-item v-if="!$store.state.token_session">
+                    Sign-In
+                </router-link>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
